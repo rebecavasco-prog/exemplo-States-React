@@ -1,0 +1,14 @@
+import React, { useState } from 'react';
+export default function InputText({ placeholder }) {
+  const [valor, setValor] = useState("");
+  const [erro, setErro] = useState(false);
+  function handleChange(e) {
+    const v = e.target.value;
+    setValor(v);
+    setErro(v.trim() === "");
+  }
+  return (<>
+    <input type="text" placeholder={placeholder} value={valor} onChange={handleChange}/>
+    {erro && <p>⚠ O campo não pode ficar vazio.</p>}
+  </>);
+}
